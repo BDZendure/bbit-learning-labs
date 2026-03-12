@@ -48,7 +48,7 @@ class mqConsumer(mqConsumerInterface):
         #Print message (The message is contained in the body parameter variable)
         message = body.decode("utf-8")
         print(message)
-        self.connection.close()
+        # self.connection.close()
         
 
     def startConsuming(self) -> None:
