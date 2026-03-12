@@ -1,5 +1,6 @@
 import pika
 import os
+import json
 from consumer_interface import mqConsumerInterface
 
 class mqConsumer(mqConsumerInterface):
@@ -43,10 +44,10 @@ class mqConsumer(mqConsumerInterface):
     ) -> None:
         # Acknowledge message
         self.channel.basic_ack(method_frame.delivery_tag, False)
+        # print(body)
         #Print message (The message is contained in the body parameter variable)
-        message = json.loads(body)
+        message = body.decode("utf-8")
         print(message)
-        self.channel.close()
         self.connection.close()
         
 
